@@ -54,7 +54,7 @@ const startUpdating = () => {
 
 const updateRandomItem = () => {
   const visibleElements = containerRef.value.querySelectorAll('.horizontal-item[data-visible="true"]')
-  const randomIndex = Math.floor(Math.random() * els.length)
+  const randomIndex = Math.floor(Math.random() * visibleElements.length)
   const randomElement = visibleElements[randomIndex]
 
   randomElement.style.transform = 'scale(1.3)'
