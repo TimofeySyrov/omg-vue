@@ -22,9 +22,9 @@ const handleObserver = (entries) => {
 
 const loadItems = () => {
   loading.value = true
-  const isFirstLoad = items.value.length === 0 ? FIRST_RENDER_COUNT : 10
+  const count = items.value.length === 0 ? FIRST_RENDER_COUNT : 10
   // Pushing new items
-  for (let i = 0; i < isFirstLoad; i++) {
+  for (let i = 0; i < count; i++) {
     items.value.push(`Item ${items.value.length + 1}`)
   }
   loading.value = false
@@ -53,22 +53,22 @@ const startUpdating = () => {
 }
 
 const updateRandomItem = () => {
-  const els = containerRef.value.querySelectorAll('.horizontal-item[data-visible="true"]')
+  const visibleElements = containerRef.value.querySelectorAll('.horizontal-item[data-visible="true"]')
   const randomIndex = Math.floor(Math.random() * els.length)
-  const el = els[randomIndex]
+  const randomElement = visibleElements[randomIndex]
 
-  el.style.transform = 'scale(1.3)'
-  el.style.backgroundColor = '#f0f0f0'
-  el.style.fontWeight = 'bold'
+  randomElement.style.transform = 'scale(1.3)'
+  randomElement.style.backgroundColor = '#f0f0f0'
+  randomElement.style.fontWeight = 'bold'
 
   setTimeout(() => {
-    el.style.transform = ''
-    el.style.backgroundColor = ''
-    el.style.fontWeight = 'normal'
+    randomElement.style.transform = ''
+    randomElement.style.backgroundColor = ''
+    randomElement.style.fontWeight = 'normal'
   }, 1000)
 
   setTimeout(() => {
-    el.textContent = getRandomNumber(0, 100)
+    randomElement.textContent = getRandomNumber(0, 100)
   }, 500)
 }
 
