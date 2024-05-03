@@ -9,7 +9,7 @@ const items = ref(
     value: getRandomNumber(10, 30)
   }))
 )
-const listItems = ref(null)
+const listItemRefs = ref(null)
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
@@ -22,7 +22,7 @@ onMounted(() => {
     })
   })
 
-  listItems.value.forEach((item) => {
+  listItemRefs.value.forEach((item) => {
     observer.observe(item)
   })
 })
@@ -34,7 +34,7 @@ onMounted(() => {
       class="horizontal-item"
       v-for="(item, index) in items"
       :key="item.id"
-      ref="listItems"
+      ref="listItemRefs"
       :data-id="item.id"
     >
       {{ item.value }}
